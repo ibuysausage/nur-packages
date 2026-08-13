@@ -1,12 +1,14 @@
-{ buildGoModule, fetchzip, }:
+{ stdenv, buildGoModule, fetchFromGitHub, }:
 
-buildGoModule {
+buildGoModule rec {
   pname = "crunchyroll-downloader";
-  version = "1.1.1";
+  version = "516af1d";
 
-  src = fetchzip {
-    url = "https://github.com/CuteTenshii/crunchyroll-downloader/archive/refs/tags/1.1.1.tar.gz";
-    sha256 = "sha256-6iwgmeIGPFT5VTG36FtonhIOD6+tnDZ6iYLh+wtm9EM=";
+  src = fetchFromGitHub {
+    owner = "CuteTenshii";
+    repo = "crunchyroll-downloader";
+    rev = "${version}";
+    sha256 = "sha256-pJG3gUakP6Jp+i05+MWsAd5OWN15KsxxWNdk0lh64zs=";
   };
 
   vendorHash = "sha256-lNWzylzk/VT3/vpSlsxCnVCmUY24dn9zdOp+8TFo0yE=";
