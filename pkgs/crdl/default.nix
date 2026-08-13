@@ -24,7 +24,7 @@ buildGoModule rec {
     description = "Downloads anime from Crunchyroll and outputs them in a MKV file";
     homepage = "https://github.com/CuteTenshii/crunchyroll-downloader";
     licenses = licenses.mit;
-    platforms = platforms.unix;
+    platforms = platforms.linux;
   };
 
 }

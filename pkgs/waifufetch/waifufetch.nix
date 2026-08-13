@@ -1,0 +1,43 @@
+{ lib, stdenv, fetchFromGitHub, makeWrapper, curl, jq, chafa, }:
+
+stdenv.mkDerivation rec {
+  pname = "waifufetch";
+  version = "03c7e12";
+
+  src = fetchFromGitHub {
+    owner = "JGH0";
+    repo = "waifufetch";
+    rev = "v${version}";
+    sha256 = "";
+  }; 
+
+  nativeBuildInputs = [ makeWrapper ];
+
+  dontBuild = true;
+
+  installPhase = ''
+    runHook preInstall
+    
+    install -Dm755 waifu $out/bin/waifu
+    install -Dm755 waifufetch $out/bin/waifufetch
+    install -Dm644 libwaifu.sh $out/bin/libwaifu.sh
+    install -Dm644 CONFIG.md $out/doc/CONFIG.md
+
+    runHook postInstall
+  '';
+
+  postFixup = ''
+    wrapProgram $out/bin/waifu \
+      --prefix PATH : ${lib.makeBinPath [ curl jq chafa ]}
+    wrapProgram $out/bin/waifufetch \
+      --prefix PATH : ${lib.makeBinPath [ curl jq chafa ]}
+  '';
+
+  meta = with lib; {
+    description = "System info with a random waifu decoration ";
+    homepage = "https://github.com/JGH0/waifufetch";
+    license = licenses.mit;
+    platforms = platforms.linux;
+  };
+
+}

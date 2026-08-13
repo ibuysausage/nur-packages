@@ -20,4 +20,5 @@
   overlays = import ./overlays; # nixpkgs overlays
 
   crdl = pkgs.callPackage ./pkgs/crdl {};
+  waifufetch = pkgs.callPackage ./pkgs/waifufetch {};
 }
