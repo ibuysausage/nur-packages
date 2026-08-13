@@ -7,7 +7,7 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "JGH0";
     repo = "waifufetch";
-    rev = "v${version}";
+    rev = "${version}";
     sha256 = "";
   }; 
 
