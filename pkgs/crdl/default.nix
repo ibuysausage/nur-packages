@@ -20,6 +20,10 @@ buildGoModule rec {
       --prefix PATH :  ${lib.makeBinPath [ ffmpeg ]}
   '';
 
+  postInstall = '' 
+    ln -s $out/bin/crunchyroll-downloader $out/bin/crdl
+  '';
+
   meta = with lib; {
     description = "Downloads anime from Crunchyroll and outputs them in a MKV file";
     homepage = "https://github.com/CuteTenshii/crunchyroll-downloader";
