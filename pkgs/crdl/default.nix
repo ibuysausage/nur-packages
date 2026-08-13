@@ -2,7 +2,7 @@
 
 buildGoModule rec {
   pname = "crunchyroll-downloader";
-  version = "516af1d";
+  version = "master";
 
   src = fetchFromGitHub {
     owner = "CuteTenshii";

@@ -2,13 +2,13 @@
 
 stdenv.mkDerivation rec {
   pname = "waifufetch";
-  version = "03c7e12";
+  version = "main";
 
   src = fetchFromGitHub {
     owner = "JGH0";
     repo = "waifufetch";
     rev = "${version}";
-    sha256 = "";
+    sha256 = "sha256-4PVlNJnkO0eVTclwfg6LfBAsAnWK6W9gj+gFKCAY6P8=";
   }; 
 
   nativeBuildInputs = [ makeWrapper ];
