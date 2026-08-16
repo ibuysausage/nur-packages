@@ -11,7 +11,7 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-4PVlNJnkO0eVTclwfg6LfBAsAnWK6W9gj+gFKCAY6P8=";
   }; 
 
-  nativeBuildInputs = [ makeWrapper ];
+ # nativeBuildInputs = [ makeWrapper ];
 
   dontBuild = true;
 
@@ -21,17 +21,16 @@ stdenv.mkDerivation rec {
     install -Dm755 waifu $out/bin/waifu
     install -Dm755 waifufetch $out/bin/waifufetch
     install -Dm644 libwaifu.sh $out/bin/libwaifu.sh
-    install -Dm644 CONFIG.md $out/doc/CONFIG.md
 
     runHook postInstall
   '';
 
-  postFixup = ''
-    wrapProgram $out/bin/waifu \
-      --prefix PATH : ${lib.makeBinPath [ curl jq chafa ]}
-    wrapProgram $out/bin/waifufetch \
-      --prefix PATH : ${lib.makeBinPath [ curl jq chafa ]}
-  '';
+ # postFixup = ''
+ #   wrapProgram $out/bin/waifu \
+ #     --prefix PATH : ${lib.makeBinPath [ curl jq chafa ]}
+ #   wrapProgram $out/bin/waifufetch \
+ #     --prefix PATH : ${lib.makeBinPath [ curl jq chafa ]}
+ # '';
 
   meta = with lib; {
     description = "System info with a random waifu decoration";
