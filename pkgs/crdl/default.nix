@@ -1,4 +1,4 @@
-{ lib, stdenv, buildGoModule, fetchFromGitHub, ffmpeg, }:
+{ lib, stdenv, buildGoModule, fetchFromGitHub, makeWrapper, ffmpeg, }:
 
 buildGoModule rec {
   pname = "crunchyroll-downloader";
