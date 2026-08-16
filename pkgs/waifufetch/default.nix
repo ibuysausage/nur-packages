@@ -34,7 +34,7 @@ stdenv.mkDerivation rec {
   '';
 
   meta = with lib; {
-    description = "System info with a random waifu decoration ";
+    description = "System info with a random waifu decoration";
     homepage = "https://github.com/JGH0/waifufetch";
     license = licenses.mit;
     platforms = platforms.linux;
