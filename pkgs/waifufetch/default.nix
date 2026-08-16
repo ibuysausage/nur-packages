@@ -26,7 +26,8 @@ stdenv.mkDerivation rec {
   '';
 
   postFixup = '' 
-    wrapProgram
+    wrapProgram $out/bin/waifu --prefix PATH : ${lib.makeBinPath [ curl jq chafa ]}
+    wrapProgram $out/bin/waifufetch --prefix PATH : ${lib.makeBinPath [ curl jq chafa ]}
   '';
 
   meta = with lib; {
