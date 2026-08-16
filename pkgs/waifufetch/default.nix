@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchFromGitHub, makeWrapper, curl, jq, chafa, }:
+{ lib, stdenv, fetchFromGitHub, makeWrapper, }:
 
 stdenv.mkDerivation rec {
   pname = "waifufetch";
