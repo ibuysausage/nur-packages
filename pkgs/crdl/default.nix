@@ -1,4 +1,4 @@
-{ lib, stdenv, buildGoModule, fetchFromGitHub, makeWrapper, ffmpeg, }:
+{ lib, stdenv, buildGoModule, fetchFromGitHub, }:
 
 buildGoModule rec {
   pname = "crunchyroll-downloader";
@@ -11,14 +11,7 @@ buildGoModule rec {
     sha256 = "sha256-pJG3gUakP6Jp+i05+MWsAd5OWN15KsxxWNdk0lh64zs=";
   };
 
-  nativeBuildInputs = [ makeWrapper ];
-
   vendorHash = "sha256-lNWzylzk/VT3/vpSlsxCnVCmUY24dn9zdOp+8TFo0yE=";
-
-  postFixup = '' 
-    wrapProgram $out/bin/crunchyroll-downloader \
-      --prefix PATH :  ${lib.makeBinPath [ ffmpeg ]}
-  '';
 
   postInstall = '' 
     ln -s $out/bin/crunchyroll-downloader $out/bin/crdl
