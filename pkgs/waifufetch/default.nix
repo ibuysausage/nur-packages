@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchFromGitHub, }:
+{ lib, stdenv, fetchFromGitHub, makeWrapper, curl, jq, chafa, }:
 
 stdenv.mkDerivation rec {
   pname = "waifufetch";
@@ -11,6 +11,8 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-4PVlNJnkO0eVTclwfg6LfBAsAnWK6W9gj+gFKCAY6P8=";
   }; 
 
+  nativeBuildInputs = [ makeWrapper ];
+
   dontBuild = true;
 
   installPhase = ''
@@ -21,6 +23,10 @@ stdenv.mkDerivation rec {
     install -Dm644 libwaifu.sh $out/bin/libwaifu.sh
 
     runHook postInstall
+  '';
+
+  postFixup = '' 
+    wrapProgram
   '';
 
   meta = with lib; {
