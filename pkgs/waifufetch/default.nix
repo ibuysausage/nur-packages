@@ -1,4 +1,12 @@
-{ lib, stdenv, fetchFromGitHub, makeWrapper, curl, jq, chafa, }:
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  makeWrapper,
+  curl,
+  jq,
+  chafa,
+}:
 
 stdenv.mkDerivation rec {
   pname = "waifufetch";
@@ -9,7 +17,7 @@ stdenv.mkDerivation rec {
     repo = "waifufetch";
     rev = "${version}";
     sha256 = "sha256-4PVlNJnkO0eVTclwfg6LfBAsAnWK6W9gj+gFKCAY6P8=";
-  }; 
+  };
 
   nativeBuildInputs = [ makeWrapper ];
 
@@ -17,7 +25,7 @@ stdenv.mkDerivation rec {
 
   installPhase = ''
     runHook preInstall
-    
+
     install -Dm755 waifu $out/bin/waifu
     install -Dm755 waifufetch $out/bin/waifufetch
     install -Dm644 libwaifu.sh $out/bin/libwaifu.sh
@@ -25,9 +33,21 @@ stdenv.mkDerivation rec {
     runHook postInstall
   '';
 
-  postFixup = '' 
-    wrapProgram $out/bin/waifu --prefix PATH : ${lib.makeBinPath [ curl jq chafa ]}
-    wrapProgram $out/bin/waifufetch --prefix PATH : ${lib.makeBinPath [ curl jq chafa ]}
+  postFixup = ''
+    wrapProgram $out/bin/waifu --prefix PATH : ${
+      lib.makeBinPath [
+        curl
+        jq
+        chafa
+      ]
+    }
+    wrapProgram $out/bin/waifufetch --prefix PATH : ${
+      lib.makeBinPath [
+        curl
+        jq
+        chafa
+      ]
+    }
   '';
 
   meta = with lib; {

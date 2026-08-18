@@ -1,4 +1,11 @@
-{ lib, stdenv, buildGoModule, fetchFromGitHub, makeWrapper, ffmpeg, }:
+{
+  lib,
+  stdenv,
+  buildGoModule,
+  fetchFromGitHub,
+  makeWrapper,
+  ffmpeg,
+}:
 
 buildGoModule rec {
   pname = "crunchyroll-downloader";
@@ -15,7 +22,7 @@ buildGoModule rec {
 
   vendorHash = "sha256-lNWzylzk/VT3/vpSlsxCnVCmUY24dn9zdOp+8TFo0yE=";
 
-  postInstall = '' 
+  postInstall = ''
     ln -s $out/bin/crunchyroll-downloader $out/bin/crdl
   '';
 

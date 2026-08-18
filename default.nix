@@ -7,7 +7,9 @@
 # commands such as:
 #     nix-build -A mypackage
 
-{ pkgs ? import <nixpkgs> { } }:
+{
+  pkgs ? import <nixpkgs> { },
+}:
 
 {
   # The `lib`, `overlays`, `nixosModules`, `homeModules`,
@@ -19,6 +21,6 @@
   # flakeModules = { }; # flake-parts modules
   overlays = import ./overlays; # nixpkgs overlays
 
-  crdl = pkgs.callPackage ./pkgs/crdl {};
-  waifufetch = pkgs.callPackage ./pkgs/waifufetch {};
+  crdl = pkgs.callPackage ./pkgs/crdl { };
+  waifufetch = pkgs.callPackage ./pkgs/waifufetch { };
 }
