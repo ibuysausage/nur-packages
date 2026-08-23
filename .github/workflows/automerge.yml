@@ -32,3 +32,4 @@ jobs:
           MERGE_COMMIT_MESSAGE: pull-request-title
           MERGE_FORKS: "false"
           UPDATE_LABELS: ""
+          MERGE_LABELS: ""
