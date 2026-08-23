@@ -14,20 +14,21 @@ on:
   check_suite:
     types:
       - completed
-  status:
+  status: {}
 
 jobs:
   automerge:
     runs-on: ubuntu-latest
+
     permissions:
       contents: write
       pull-requests: write
 
     steps:
-      - id: automerge
-        name: automerge
+      - name: automerge
         uses: pascalgn/automerge-action@v0.16.4
         env:
           GITHUB_TOKEN: ${{ secrets.FLAKE_LOCK_PAT }}
           MERGE_COMMIT_MESSAGE: pull-request-title
           MERGE_FORKS: "false"
+          UPDATE_LABELS: ""
