@@ -4,10 +4,14 @@ on:
   workflow_dispatch:
   pull_request:
     types:
-      - opened
+      - labeled
+      - unlabeled
       - synchronize
-      - reopened
+      - opened
+      - edited
       - ready_for_review
+      - reopened
+      - unlocked
   pull_request_review:
     types:
       - submitted
@@ -25,11 +29,12 @@ jobs:
       pull-requests: write
 
     steps:
-      - name: automerge
+      - id: automerge
+        name: automerge
         uses: pascalgn/automerge-action@v0.16.4
         env:
           GITHUB_TOKEN: ${{ secrets.FLAKE_LOCK_PAT }}
-          MERGE_COMMIT_MESSAGE: pull-request-title
+          MERGE_COMMIT_MESSAGE: "pull-request-title"
           MERGE_FORKS: "false"
-          UPDATE_LABELS: ""
           MERGE_LABELS: ""
+          UPDATE_LABELS: ""
