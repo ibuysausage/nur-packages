@@ -1,33 +1,33 @@
 name: automerge
+
 on:
+  workflow_dispatch:
   pull_request:
     types:
-      - labeled
-      - unlabeled
-      - synchronize
       - opened
-      - edited
-      - ready_for_review
+      - synchronize
       - reopened
-      - unlocked
+      - ready_for_review
   pull_request_review:
     types:
       - submitted
   check_suite:
     types:
       - completed
-  status: {}
+  status:
+
 jobs:
   automerge:
     runs-on: ubuntu-latest
     permissions:
       contents: write
       pull-requests: write
+
     steps:
       - id: automerge
         name: automerge
-        uses: "pascalgn/automerge-action@v0.16.4"
+        uses: pascalgn/automerge-action@v0.16.4
         env:
-          GITHUB_TOKEN: "${{ secrets.FLAKE_LOCK_PAT }}"
-          MERGE_COMMIT_MESSAGE: "pull-request-title"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MERGE_COMMIT_MESSAGE: pull-request-title
           MERGE_FORKS: "false"
