@@ -33,7 +33,7 @@ jobs:
         # Github found at
         # https://github.com/<your_githubname>/nur-packages/settings/secrets
         cachixName:
-          - <YOUR_CACHIX_NAME>
+          - ibuysausage-nur
         nixPath:
           - nixpkgs=https://github.com/NixOS/nixpkgs/archive/refs/heads/nixpkgs-unstable.tar.gz
           - nixpkgs=https://github.com/NixOS/nixpkgs/archive/refs/heads/nixos-unstable.tar.gz
@@ -56,7 +56,7 @@ jobs:
     - name: Setup cachix
       uses: cachix/cachix-action@v17
       # Don't replace <YOUR_CACHIX_NAME> here!
-      if: ${{ matrix.cachixName != '<YOUR_CACHIX_NAME>' }}
+      if: ${{ matrix.cachixName != 'ibuysausage-nur' }}
       with:
         name: ${{ matrix.cachixName }}
         signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
