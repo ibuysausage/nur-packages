@@ -31,6 +31,7 @@ buildGoModule rec {
   meta = with lib; {
     description = "Downloads anime from Crunchyroll and outputs them in a MKV file";
     homepage = "https://github.com/CuteTenshii/crunchyroll-downloader";
+    changelog = "https://github.com/CuteTenshii/crunchyroll-downloader/releases";
     license = licenses.mit;
     platforms = platforms.linux;
     mainProgram = "crdl";
