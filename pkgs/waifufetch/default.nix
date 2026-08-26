@@ -7,7 +7,6 @@
   jq,
   chafa,
 }:
-
 stdenv.mkDerivation rec {
   pname = "waifufetch";
   version = "main";
@@ -55,6 +54,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/JGH0/waifufetch";
     license = licenses.mit;
     platforms = platforms.linux;
+    mainProgram = "waifufetch";
   };
-
 }

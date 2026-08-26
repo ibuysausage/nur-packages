@@ -1,12 +1,10 @@
 {
   lib,
-  stdenv,
   buildGoModule,
   fetchFromGitHub,
   makeWrapper,
   ffmpeg,
 }:
-
 buildGoModule rec {
   pname = "crunchyroll-downloader";
   version = "master";
@@ -33,8 +31,8 @@ buildGoModule rec {
   meta = with lib; {
     description = "Downloads anime from Crunchyroll and outputs them in a MKV file";
     homepage = "https://github.com/CuteTenshii/crunchyroll-downloader";
-    licenses = licenses.mit;
+    license = licenses.mit;
     platforms = platforms.linux;
+    mainProgram = "crdl";
   };
-
 }
