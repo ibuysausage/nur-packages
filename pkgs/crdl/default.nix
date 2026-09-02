@@ -13,7 +13,7 @@ buildGoModule rec {
     owner = "CuteTenshii";
     repo = "crunchyroll-downloader";
     rev = "${version}";
-    sha256 = "sha256-pJG3gUakP6Jp+i05+MWsAd5OWN15KsxxWNdk0lh64zs=";
+    sha256 = "sha256-YOzZLWtNBUTQksrEVtPJwhPONinq2R0az4H8WG2HC6g=";
   };
 
   nativeBuildInputs = [ makeWrapper ];
