@@ -7,13 +7,13 @@
 }:
 buildGoModule rec {
   pname = "crunchyroll-downloader";
-  version = "1832f65";
+  version = "734421c";
 
   src = fetchFromGitHub {
     owner = "CuteTenshii";
     repo = "crunchyroll-downloader";
     rev = "${version}";
-    sha256 = "sha256-TPBX9yhq18BIcH9Y4cb+GwiyOTgJcLMG5BNelv3gkpU=";
+    sha256 = "sha256-WJkfNZ1m0bnO7k8zZXYwzvcGkUOJsUagZUA5glQpzXU=";
   };
 
   nativeBuildInputs = [ makeWrapper ];
